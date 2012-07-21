@@ -1,7 +1,7 @@
 #include <iostream>
 #include <algorithm>
 
-void step_count(const float argFltAlpha, const float argFltBeta, const int argIntSteps, float* argIntPtrState) {
+void step_count(const float argFltAlpha, const float argFltBeta, const int argIntSteps, float* argFltPtrState) {
     // Init. result array with argFltBeta as the value
     std::fill_n(argIntPtrState, argIntSteps, argFltBeta);
     // Solve the task
