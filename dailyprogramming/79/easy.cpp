@@ -1,26 +1,36 @@
-#include <iostream>
-#include <algorithm>
+// Copyright 2012 ILDesign Ltd.
+// MIT License: do whatever at your own risk
+// Author: Jonn Mostovoy
+//
+// Solution for /r/dailyprogrammer easy#79
+// Implementing Google Inc. C++ Style Guide
+// http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml
 
-void step_count(const float aAlpha, const float aBeta, const int aSteps, float* aState) {
-    // Init. result array with aBeta as the value
-    std::fill_n(aState, aSteps, aBeta);
-    // Solve the task
-    if (aSteps >= 2) {
-        // Calculate the step
-        float step = (aBeta-aAlpha)/(aSteps-1);
-        // Solve the bich and store the data in the last argument
-        for (int i=aSteps; i>=0; --i) {
-            aState[(i-2)] = aState[(i-1)] - step;
-        }
-    }
-    return;
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+// Returns a vector of values from alpha up/down to beta
+// equivalently distributed among n steps.
+// alpha: starting value
+// beta : ending value
+// step : number of steps
+//
+// Delta for step is (beta-alpha) / (steps-1)
+//
+vector<float> StepCount(const float alpha, const float beta, const int steps) {
+  vector<float> result;
+  for (;(int)result.size() < steps;)
+    result.push_back(alpha + (result.size() * ((beta-alpha)/(steps-1)) ));
+  return result;
 }
 
+// Test function
 int main() {
-    float result[5];
-    step_count(18.75, -22.0, 5, result);
-    std::cout << "[ ";
-    for (int i = 0; i < 5; i++) std::cout << result[i] << ", ";
-    std::cout << "]";
-    return 0;
+  vector<float> lol = StepCount(18.75, -22.0, 105);
+  std::cout << "[ ";
+  for (int i = 0; i < 105; i++) std::cout << lol[i] << ", ";
+  std::cout << "]";
+  return 0;
 }
