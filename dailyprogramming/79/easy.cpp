@@ -21,7 +21,7 @@ using namespace std;
 //
 vector<float> StepCount(const float alpha, const float beta, const int steps) {
   vector<float> result;
-  for (;(int)result.size() < steps;)
+  while((int)result.size() < steps)
     result.push_back(alpha + (result.size() * ((beta-alpha)/(steps-1)) ));
   return result;
 }
