@@ -31,7 +31,11 @@ vector<float> StepCount(const float alpha, const float beta, const unsigned step
 int main() {
   vector<float> lol = StepCount(18.75, -22.0, 105);
   std::cout << "[ ";
-  for (int i = 0; i < 105; i++) std::cout << lol[i] << ", ";
-  std::cout << "]";
+  int i = 1;
+  std::cout << lol[0];
+  while(i < 105)
+    std::cout << ", " << lol[i++];
+  std::cout << " ]";
+  
   return 0;
 }
