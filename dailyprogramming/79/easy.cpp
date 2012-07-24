@@ -9,7 +9,8 @@
 #include <iostream>
 #include <vector>
 
-using namespace std;
+using std::vector;
+using std::cout;
 
 // Returns a vector of values from alpha up/down to beta
 // equivalently distributed among n steps.
@@ -19,9 +20,13 @@ using namespace std;
 //
 // Delta for step is (beta-alpha) / (steps-1)
 //
-vector<float> StepCount(const float alpha, const float beta, const int steps) {
+vector<float> StepCount(const float alpha, const float beta, const unsigned steps) {
   vector<float> result;
+<<<<<<< HEAD
   while((int)result.size() < steps)
+=======
+  while(result.size() < steps)
+>>>>>>> 1df71dff986ca9deab97532c3e1ce1a9ba0ef777
     result.push_back(alpha + (result.size() * ((beta-alpha)/(steps-1)) ));
   return result;
 }
